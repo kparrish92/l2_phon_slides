@@ -1,0 +1,426 @@
+---
+title: "Semana 1: El papel de la fonología de la L1"
+subtitle: 'La adquisición de la fonética y fonología del español como L2'
+author  : "Kyle Parrish"
+date    : "Goethe Uni Frankurt</br>Winter 2024</br>Last update: `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, my-css.css, rutgers-fonts]
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: true
+      ratio: 16:9
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', fig.width = 6, fig.height = 6, message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  # primary_color = "#345865",
+  primary_color = "#B56B6F",
+  secondary_color = "#2c8475",
+  black_color = "#4242424",
+  white_color = "#FFF",
+  base_font_size = "25px",
+  # text_font_family = "Jost",
+  # text_font_url = "https://indestructibletype.com/fonts/Jost.css",
+  header_font_google = google_font("Times New Roman", "400", "700"),
+  header_font_weight = "400",
+  inverse_header_color = "#eaeaea",
+  title_slide_text_color = "black",
+  text_slide_number_color = "#9a9a9a",
+  text_bold_color = "#f79334",
+  code_inline_color = "#B56B6F",
+  code_highlight_color = "transparent",
+  link_color = "#2c8475",
+  table_row_even_background_color = lighten_color("#345865", 0.9),
+  extra_fonts = list(
+    google_font("Times New Roman", "400")
+  ),
+  colors = c(
+    green = "#31b09e",
+    "green-dark" = "#2c8475",
+    highlight = "#87f9bb",
+    purple = "#887ba3",
+    pink = "#B56B6F",
+    orange = "#f79334",
+    red = "#dc322f",
+    `blue-dark` = "#002b36",
+    `text-dark` = "#202020",
+    `text-darkish` = "#424242",
+    `text-mild` = "#606060",
+    `text-light` = "#9a9a9a",
+    `text-lightest` = "#eaeaea"
+  ),
+  extra_css = list(
+    ".remark-slide-content h3" = list(
+      "margin-bottom" = 0, 
+      "margin-top" = 0
+    ),
+    ".smallish, .smallish .remark-code-line" = list(`font-size` = "0.9em")
+  )
+)
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons", "share_again"))
+xaringanExtra::use_extra_styles()
+```
+
+
+```{r components, include=FALSE}
+slides_from_images <- function(
+  path,
+  regexp = NULL,
+  class = "hide-count",
+  background_size = "contain",
+  background_position = "top left"
+) {
+  if (isTRUE(getOption("slide_image_placeholder", FALSE))) {
+    return(glue::glue("Slides to be generated from [{path}]({path})"))
+  }
+  if (fs::is_dir(path)) {
+    imgs <- fs::dir_ls(path, regexp = regexp, type = "file", recurse = FALSE)
+  } else if (all(fs::is_file(path) && fs::file_exists(path))) {
+    imgs <- path
+  } else {
+    stop("path must be a directory or a vector of images")
+  }
+  imgs <- fs::path_rel(imgs, ".")
+  breaks <- rep("\n---\n", length(imgs))
+  breaks[length(breaks)] <- ""
+
+  txt <- glue::glue("
+  class: {class}
+  background-image: url('{imgs}')
+  background-size: {background_size}
+  background-position: {background_position}
+  {breaks}
+  ")
+
+  paste(txt, sep = "", collapse = "")
+}
+options("slide_image_placeholder" = FALSE)
+```
+
+# Antes de empezar
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Tiempo: 10 minutos**
+
+En grupos, contensten la siguientes preguntas:
+
+1. ¿Es difícil aprender la fonética de un nuevo idioma?
+
+2. ¿Es posible hablar como un nativo (fonéticamente)?
+
+3. ¿Crees que las **vocales** son difíciles de aprender? ¿Son más fáciles de entender o pronunciar?
+
+4. ¿Crees que las **consonantes** son difíciles de aprender? ¿Son más fáciles de entender o pronunciar?
+]]]
+
+---
+
+class: title-slide-section, middle
+<br>
+<br>
+<br>
+<br>
+# Lectura 1: Simonet (2012)
+
+---
+
+# Ideas principales
+
+
+.pull-left[
+.full-width[
+.content-box-grey[
+.large[
+- La fonética es dificil de aprender cómo los nativos. 
+
+- Las vocales del español son faciles de percibir, y un poco más dificiles de producir.
+
+- Las consonantes son más dificiles que las vocales en ambos la percepción y la producción.
+]]]]
+
+
+<img src="./images/simonet.png"
+     width="254px" height="327px"
+     style="position:absolute; left:800px; top:150px;">
+     
+---
+
+# La fonética es dificil de aprender cómo los nativos. 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- No se encuentra muchas personas que hablen como un “nativo” 
+
+- Hay muchos estudios que muestran que **la producción de los L2-learners** todavía se juzga como **acentuados** por los hablantes nativos, aun después de años (Oyama 1976; Flege et al. 1995a; Flege et al. 1999)
+
+- También **no perciben las diferencias/contrastes** entre ciertos sonidos  (Caramazza et al. 1973; Bohn and Flege 1992; Flege et al. 1992, 1995b, 1999b; Munro et al. 1995; MacKay et al. 2001; Piske et al. 2002)
+]]]
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Hay muchas ideas que se propone para explicar por qué:
+
+- Varios factores relacionados con la edad 
+
+- La duración de la residencia en país nuevo.
+
+- La motivación 
+
+- El aptitud para el aprendizaje de idiomas.
+
+]]]
+---
+
+# La fonética es dificil de aprender cómo los nativos. 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+
+- Los factors de la edad ha recibido mucha atención.
+
+- Lennenberg (1967) ha propuesto que los problemas ocurren a causa de un **“Critical Period”** - período crítico.
+(The Critical Period Hypothesis - CPH)
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+
+- Segun el CPH, aprender un idioma es mucho más difícil a partir de cierta edad - dominio total ya no es posible. 
+
+- La existencia de un periodo crítico tiende a atribuirse a **una pérdida de plasticidad neuronal** dependiente de la edad o a cambios madurativos en la estructura y el funcionamiento del cerebro que se producen durante la pubertad (por ejemplo, Lenneberg 1967; Patkowski 1980, 1990; Scovel 1988; DeKeyser 2000).
+
+]]]
+
+---
+
+# CPH no puede explicar todo
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- Una alternativa al CPH es que con más tiempo con el L1, vienen más dificultades con el L2.
+
+- Es importante notar que la L1 del aprendiz tiene un impacto en la facilitad de aprender una segunda lengua.
+
+- Si solemente tendía que ver con un período crítico, no esperamos observar muchas diferencias entre hablantes de la misma edad que hablan diferentes L1.
+
+- Hay muchos estudios que muestran que la L1 importa. 
+]]]
+
+---
+class: title-slide-section, middle
+<br>
+<br>
+<br>
+<br>
+### La fuente de mucho de nuestro conocimiento viene de **los experimentos**.
+
+
+---
+
+# Experimentos
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Tiempo: 30 minutos**
+
+La fuente de mucho de nuestro conocimiento viene de los experimentos. Vamos a pensar un poco de esto. Sin saber lo que se ha hecho los investigadores actuales/pasados, ¿cómo podemos evaluar las habilidades de los hablantes L2? 
+
+1. Hablamos de los aprendices del español con alemán o inglés como L1. Queremos saber si producen y perciben las vocales de su L2. Con un compañero devisan dos experimentos - uno que mide la producción y una segunda que mide la percepción. No hay que medir todas las vocales, se puede enfocar en 1 o 2 sonidos.
+
+No hay respuestas correctas - la creatividad es rey :)
+
+]]]
+
+---
+
+class: title-slide-section, middle
+<br>
+## Un ejemplo de un experimento de la percepción de las vocales 
+
+https://kparrish92.github.io/parrish_dissertation/slides/index.html#38 
+
+---
+
+class: title-slide-section, middle
+<br>
+## Un ejemplo de un experimento de la producción de las vocales 
+
+---
+
+## Experimento de la producción de las vocales  
+
+.pull-left[
+.content-box-grey[
+
+- Comparamos la producción de las vocales que producimos en **alemán** y **español**.
+
+- En las frases de **alemán** grabamos la palabra **5 veces** en la frase portadora: 
+
+*Ich sage ____ noch mal.* 
+
+- En las frases de **español** grabamos la palabra **5 veces** en la frase portadora: 
+
+*Yo digo ____ otra vez.* 
+]]
+
+
+--
+
+.pull-right[
+.content-box-grey[
+- Palabras del alemán: 
+  - Stiele
+  - Stille
+  - Bulle
+  - fülle
+  - falle  
+
+- Palabras del español:
+  - Sigo
+  - Suyo
+  - Saco 
+]]
+
+
+---
+
+# Las vocales del español son faciles de percibir, y un poco más dificiles de producir.
+
+.pull-left[
+.content-box-grey[
+- Se cree que la percepción (la identificación) de las vocales de espanol como L2 es relativamente fácil. 
+
+- Se debe a la cantidad de voacles del español - solamente hay **5 vocales** comparado con muchas otras lenguas.
+
+- En general, cuando la L1 tiene más vocales que la L2, esto es más facil que lo opuesto. 
+
+- Ejemplo: Una persona que aprende el inglés cómo L2 tiene (español L1) tendrá más problemas que una persona que aprende el español cómo L2 (inglés L1).
+]]
+
+
+---
+
+# Las vocales del español son faciles de percibir, y un poco más dificiles de producir.
+
+.pull-left[
+.content-box-grey[
+- Poder producir las vocales del español depende de la edad y de la L1:
+
+- Guion (2003) estudió hablantes de quechua ecuatoriano como L1 con español como L2.
+  - El quechua ecuatoriano tiene 3 vocales (español tiene 5).
+
+- Las 3 sonidos que tienen en común el quechua ecuatoriano y el español son /a/, /u/ y /i/, pero son **fonéticamente distintas**.
+]]
+
+--
+
+.pull-right[
+.content-box-grey[
+- Los autores querían ver **si los habantes tendrían distribuciones distintas** en su quechua ecuatoriano y español para los sonidos que existen en ambas lenguas, y si cambia esto según la edad de inicio de la adquisición de los hablantes.
+
+Los resultados mostraron que solamente **los hablantes con una edad de inicio de la adquisición temprana pronunciaron las vocales de las lenguas distintamente**. Los demás tenían categorías fusionadas.
+]]
+
+---
+
+# Las vocales del español son faciles de percibir, y un poco más dificiles de producir.
+
+.pull-left[
+.content-box-grey[
+- Cobb (2009) la producción de las vocales L1 inglés - L2 español
+
+- Hay más vocales en inglés que en español.
+]]
+
+--
+
+.pull-right[
+.content-box-grey[
+- No tenían muchas problemas con /i/ ni /o/ (Cobb, 2009)
+
+- La /u/ es difícil al principio, pero se adquiere (Cobb, 2009)
+
+- La /a/ y la /e/ es difíciles al principio, pero no se adquiere en este estudio (Cobb, 2009)
+]]
+
+---
+
+## Bonus: LexTALE 
+
+.pull-left[
+.content-box-grey[
+**Detalles**
+- Para medir la proficiencia del español, hay muchas opciones - una de ellas es un examen que se llama LexTALE. 
+
+- El LexTALE existe en varios idiomas. 
+
+- El LexTALE es un "lexical decision task", en el que se va una palabara en la pantalla.
+
+- El objetivo del participante es decidir si la palabra es real (existe en español) o falsa.
+
+- La idea es que con esta prueba se mide el tamaño del vocabulario de una persona, y que eso predice la proficiencia general.
+]]
+
+--
+
+.pull-right[
+.content-box-grey[
+**Pruébalo:**
+
+español: https://run.pavlovia.org/kparrish92/empathy_lextale/ 
+inglés: https://www.lextale.com/takethetest.html 
+]]
+
+---
+
+
+class: title-slide-section, middle
+<br>
+<br>
+<br>
+<br>
+# Next time - Lectura 2: Tyler (2019)
+
+---
+
+# Ideas principales
+
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- Hay 2 modelos que predicen las dificultades fonéticas de los aprendices: 
+
+  - Perceptual Assimilation Model-L2 (PAM-L2; Best & Tyler, 2007)
+
+  - Speech Learning Model (SLM; Flege, 1995)
+
+- Aprendizaje de una lengua nueva debe empezar lo más temprano posible.
+
+
+
+- Los aprendices deben tener "high quality input".
+
+- Se recomienda tener entrenamiento en la producción y la percepción.
+]]]
+
+
