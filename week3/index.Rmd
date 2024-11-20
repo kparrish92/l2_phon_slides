@@ -1,0 +1,475 @@
+---
+title: "Semana 3: La relación entre la percepción y la producción "
+subtitle: 'La adquisición de la fonética y fonología del español como L2'
+author  : "Kyle Parrish"
+date    : "Goethe Uni Frankurt</br>Winter 2024</br>Last update: `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, my-css.css, rutgers-fonts]
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: true
+      ratio: 16:9
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', fig.width = 6, fig.height = 6, message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  # primary_color = "#345865",
+  primary_color = "#B56B6F",
+  secondary_color = "#2c8475",
+  black_color = "#4242424",
+  white_color = "#FFF",
+  base_font_size = "25px",
+  # text_font_family = "Jost",
+  # text_font_url = "https://indestructibletype.com/fonts/Jost.css",
+  header_font_google = google_font("Times New Roman", "400", "700"),
+  header_font_weight = "400",
+  inverse_header_color = "#eaeaea",
+  title_slide_text_color = "black",
+  text_slide_number_color = "#9a9a9a",
+  text_bold_color = "#f79334",
+  code_inline_color = "#B56B6F",
+  code_highlight_color = "transparent",
+  link_color = "#2c8475",
+  table_row_even_background_color = lighten_color("#345865", 0.9),
+  extra_fonts = list(
+    google_font("Times New Roman", "400")
+  ),
+  colors = c(
+    green = "#31b09e",
+    "green-dark" = "#2c8475",
+    highlight = "#87f9bb",
+    purple = "#887ba3",
+    pink = "#B56B6F",
+    orange = "#f79334",
+    red = "#dc322f",
+    `blue-dark` = "#002b36",
+    `text-dark` = "#202020",
+    `text-darkish` = "#424242",
+    `text-mild` = "#606060",
+    `text-light` = "#9a9a9a",
+    `text-lightest` = "#eaeaea"
+  ),
+  extra_css = list(
+    ".remark-slide-content h3" = list(
+      "margin-bottom" = 0, 
+      "margin-top" = 0
+    ),
+    ".smallish, .smallish .remark-code-line" = list(`font-size` = "0.9em")
+  )
+)
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons", "share_again"))
+xaringanExtra::use_extra_styles()
+```
+
+
+```{r components, include=FALSE}
+slides_from_images <- function(
+  path,
+  regexp = NULL,
+  class = "hide-count",
+  background_size = "contain",
+  background_position = "top left"
+) {
+  if (isTRUE(getOption("slide_image_placeholder", FALSE))) {
+    return(glue::glue("Slides to be generated from [{path}]({path})"))
+  }
+  if (fs::is_dir(path)) {
+    imgs <- fs::dir_ls(path, regexp = regexp, type = "file", recurse = FALSE)
+  } else if (all(fs::is_file(path) && fs::file_exists(path))) {
+    imgs <- path
+  } else {
+    stop("path must be a directory or a vector of images")
+  }
+  imgs <- fs::path_rel(imgs, ".")
+  breaks <- rep("\n---\n", length(imgs))
+  breaks[length(breaks)] <- ""
+
+  txt <- glue::glue("
+  class: {class}
+  background-image: url('{imgs}')
+  background-size: {background_size}
+  background-position: {background_position}
+  {breaks}
+  ")
+
+  paste(txt, sep = "", collapse = "")
+}
+options("slide_image_placeholder" = FALSE)
+```
+# Antes de empezar
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Tiempo: 8 minutos**
+
+En grupos, contensten la pregunta siguiente:
+
+1. ¿Es necesario poder entender un contraste para poder producirlo?
+
+
+]]]
+
+---
+
+class: title-slide-section, middle
+<br>
+<br>
+<br>
+<br>
+# Lectura 3: Isbell (2019)
+
+---
+
+# Ideas principales
+
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- La relación entre la percepción y la producción se llama el **perception-production link**.
+
+- Se cree que la percepción viene antes de la producción.
+  
+- La evidencia ha sido mixta (hay ejemplos en los que hay percepción sin producción/producción sin percepción)
+]]]
+
+---
+
+# Introducción 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- La idea que la percepción viene primero viene de los infantes. 
+
+- Temprano en la vida, los infantes pueden discriminar todos los sonidos de las lenguas del mundo. 
+
+- Pierden esta habilidad a partir de 6 meses. 
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+### Babies are geniuses:
+
+https://www.youtube.com/watch?v=WvM5bqUsbu8 
+
+https://www.youtube.com/watch?v=M-ymanHajN8 
+]]]
+
+---
+# Introducción 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- En la L2, la percepción no es siempre fácil.
+
+- Un ejemplo: Japonés L1 - inglés L2 - /r/ - /l/
+
+- Es dificil producir, también (Avery & Ehrlich, 1992).
+]]]
+
+---
+
+# Introducción 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**La percepción**: el reconocimiento del sonido como perteneciente a una categoría fonológica durante el procesamiento del input auditivo. 
+
+
+**La producción**: utilización del sistema oral-articulatorio para emitir una señal auditiva portadora de un mensaje lingüísticamente (fonológicamente) codificado (o, más sencillamente, hablar).
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+- **Vínculo entre percepción y producción**: La percepción debe venir antes de la producción. 
+
+- La presencia de la producción sin la percepción sería difícil de explicar desde este punto de vista. 
+]]]
+
+---
+
+# Evidencia del vínculo entre percepción y producción
+
+.pull-left[
+.full-width[
+.content-box-grey[
+El **Speech Learning Model** predice que los aprendices crean nuevas categorías fonéticas cuando el sonido de la L2 es "suficientemente diferente" que el sonido de la L1. 
+
+Aoyama et al. (2004): La adquisición de /r/ - /l/ en inglés como L2.
+ - El contraste no existe en japonés (solamente hay /l/)
+ - La /l/ de japonés es parecido a la /r/ del inglés: por eso, es más facil aprender la /l/ del inglés.
+
+La misma pasó con aprendices del inglés con coreano cómo L1 (Baker & Trofimovich, 2006)
+]]]
+
+---
+
+# Retos para el vínculo entre percepción y producción
+
+.pull-left[
+.full-width[
+.content-box-grey[
+Retos: pruebas de percepción sin producción y pruebas de producción sin (o superando) la percepción.
+
+El primer reto, **la percepción sin producción**, limita en gran medida la fuerza del vínculo. 
+ - Derwing y Munro (2015)" es muy fácil para los hablantes de inglés L1 percibir la diferencia entre la vibrante multiple /r/ y simple /ɾ/ del español
+ - No es fácil producir la distinción.
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+**Lord y Harrington (2013)**: pocas mejoras en la producción de los fonemas después de actividades de aprendizaje centradas en la producción para estudiantes de español. 
+
+**Kim y Park (1995)**: los estudiantes de inglés L1 de coreano tenían grandes dificultades para producir contrastes /l-ɾ/ con precisión a pesar de una percepción correcta. 
+
+**Chan (2014)**: los aprendices de inglés cantonés L1 tenían una percepción precisa de la /ð/ inglesa, pero en general no lograban producirla.
+]]]
+
+---
+
+# Retos para el vínculo entre percepción y producción
+
+.pull-left[
+.full-width[
+.content-box-grey[
+Los hablantes de herencia presentan otros retos
+
+**Oh, Jun, Knightly y Au (2003)**: la producción y percepción de varios sonidos coreanos por hablantes de herencia y otros hablantes (L1 y L2).
+
+Resultados: los hablantes de herencia tenían ventajas sobre otros hablantes en la percepción. 
+]]]
+
+.pull-right[
+.full-width[
+.content-box-grey[
+En la producción, los hablantes de herencia que habían hablado la lengua de herencia desde joven podía producir un contraste. 
+
+Pero había otro caso que nadie podía producir - una muestra que hay algo más (a partir de la percepción) que se necesita para producción.
+]]]
+
+---
+
+# Retos para el vínculo entre percepción y producción
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- Hay menos evidencia en el caso del segundo reto, **la producción sin percepción**.
+
+- Sheldon y Strange (1982) para un grupo de estudiantes japoneses de inglés, la producción de /r/ y /l/ era más precisa que la percepción.
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+- Hay problemas:
+ - **Ceiling effects** una tasa de error de producción del 1% y una tasa de error de percepción del 10%
+ - **No vemos el desarollo** con este estudio, no se puede decir desarolló la percepción antes de la producción.
+ - **Sampling issues**: había pocos participantes.
+]]]
+
+---
+
+# Los efectos de la edad
+
+.pull-left[
+.full-width[
+.content-box-grey[
+Los bilingües que aprenden una L2 a una edad temprana suelen ser indistinguibles de los hablantes de L1 en la producción. 
+
+¿Es así en la percepción?
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Darcy y Kruger (2012) dirían que no.
+
+En su estudio, los niños bilingües de L1 turco/L2 alemán, a pesar de ser indistinguibles de sus compañeros de L1 alemán en la producción, categorizaban los contrastes de algunas características alemanas de forma diferente a sus compañeros monolingües. 
+
+Sugieren que puede ser posible que los bilingües formen nuevas categorías de L2 que sean distintas de la L1 pero que al mismo tiempo difieran de las normas monolingües.
+]]]
+
+---
+
+# Cuestiones metodológicas
+
+.pull-left[
+.full-width[
+.content-box-grey[
+Se sugiere que hay 3 factors metodológicas importantes en la investigación del vínculo entre la producción y la percepción que cuestionan la validez de la evidencia. 
+
+Restrictive tasks: experimentos que limitan la capacidad inferencial.
+
+Incomparabilidad entre las medidas de percepción y de producción.
+
+Pequeño tamaño de muestra estadística (sample size).
+]]]
+
+---
+
+# Cuestiones metodológicas: Restrictive tasks
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Los experimentos de la percepción** en su mayoría implican una discriminación mínima de pares/triplos (por ejemplo, tareas AXB), utilizando palabras o imágenes como opciones.
+
+Esto puede causar problemas de validez ecológica. 
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+**Los experimentos de la producción** también suelen limitarse a palabras sueltas, aunque también se utilizan frases portadoras (Digo ____ para ti).
+]]]
+
+
+---
+
+# Cuestiones metodológicas: Restrictive tasks
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Tiempo: 8 minutos**
+
+En grupos, contensten la pregunta siguiente:
+
+Si queremos evaluar la producción, ¿sería mejor utilizar una tarea simple, como leer una frase, o algo más difícil, como describir una foto?
+
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Isbell sugiere que las tareas de la producción espontánea muestran la producción mejor que las tareas más simples.
+
+La idea es que las exigencias de la producción del habla en tiempo real impiden un control minucioso de la producción fonológica.
+
+Las tareas simples no reflejan la adquisición, sino una supervisión cuidadosa ayudada por el conocimiento explícito.
+]]]
+
+---
+
+# Cuestiones metodológicas: falta de comparabilidad
+
+.pull-left[
+.full-width[
+.content-box-grey[
+Otro problema de las medidas de percepción y producción es su **comparabilidad**.
+
+La percepción de la discriminación de una sola palabra es difícil de comparar con los índices de precisión de producción basados en transcripciones humanas.
+]]]
+
+--
+
+
+.pull-right[
+.full-width[
+.content-box-grey[
+La precisión de la percepción se determina mediante tareas de elección forzada 
+  - Puede introducir adivinanzas. 
+  - Las respuestas son correctos o incorrectos.
+
+La producción puede determinarse mediante transcripciones o clasificaciones de un experto formado. 
+  - Menos susceptible al azar. 
+  - Criterios más estrictos.
+
+Las tareas de la producción son más dificiles desde una perspectiva cognitiva.
+]]]
+
+---
+
+# Cuestiones metodológicas: sample size
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Sample size**: es difícil generalizar el resultado de un estudio con pocos participantes.  
+  -   Sheldon and Strange (1982) tenían dos grupos de 4 y 6 participantes.
+]]]  
+  
+--
+
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Más información: https://kparrish92.github.io/power_workshop_hls/pres.html#1
+]]]  
+---
+
+# Resumen 
+
+El vínculo percepción-producción parece tener sólidos fundamentos en la investigación empírica. 
+
+Los relatos más comunes sobre las dificultades de pronunciación y la investigación sobre los **hablantes de herencia** y los **niños bilingües** presentan retos para el vínculo percepción-producción.
+
+Las **cuestiones de investigación** relacionadas con el tipo de tareas experimentales, la comparabilidad entre las medidas de percepción y producción y el tamaño de muestras plantean algunos retos para la investigación relacionada con el vínculo percepción-producción.
+---
+
+# Investigación futura
+
+Los elementos del vínculo percepción-producción descritos anteriormente y los retos generales que plantea este vínculo plantean cuestiones empíricas.
+
+Se recomienda:
+
+--
+
+- **Más datos a lo largo del tiempo**: Dentro de estos estudios centrados en la percepción-producción, los diseños de investigación que incluyen observaciones más frecuentes a lo largo del tiempo permitirían comprender mejor la relación entre percepción y producción, sobre todo si se tiene en cuenta que, para muchas características, los alumnos necesitan tiempo para desarrollar la articulación después de la percepción (Flege, 1991).
+
+ - Del mismo modo, el hecho de que la precisión de la percepción supere a la de la producción en un momento dado sólo puede proporcionar un apoyo indirecto a la relación; son necesarios más puntos temporales para investigar las predicciones intrínsecamente dinámicas de la relación.
+
+---
+
+# Investigación futura
+
+.pull-left[
+.full-width[
+.content-box-grey[
+- **Hacer que los datos sean comparables**: Además, sería informativo intentar confirmar los hallazgos existentes en un contexto más naturalista. 
+
+Ejemplo: 
+
+Percepción: escuchar narraciones breves o conversaciones
+
+Producción: producciones extensas como descripciones de imágenes o entrevistas.
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+**Recopilar datos de muestras fuera de los típicos alumnos de L2 instruidos en edad universitaria** ejemplos de otros son: niños bilingües o hablantes de herencia.
+]]]
