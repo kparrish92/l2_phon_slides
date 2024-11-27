@@ -1,0 +1,336 @@
+---
+title: "Semana 4: High Variability Phonetic Training"
+subtitle: 'La adquisición de la fonética y fonología del español como L2'
+author  : "Kyle Parrish"
+date    : "Goethe Uni Frankurt</br>Winter 2024</br>Last update: `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, my-css.css, rutgers-fonts]
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: true
+      ratio: 16:9
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', fig.width = 6, fig.height = 6, message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  # primary_color = "#345865",
+  primary_color = "#B56B6F",
+  secondary_color = "#2c8475",
+  black_color = "#4242424",
+  white_color = "#FFF",
+  base_font_size = "25px",
+  # text_font_family = "Jost",
+  # text_font_url = "https://indestructibletype.com/fonts/Jost.css",
+  header_font_google = google_font("Times New Roman", "400", "700"),
+  header_font_weight = "400",
+  inverse_header_color = "#eaeaea",
+  title_slide_text_color = "black",
+  text_slide_number_color = "#9a9a9a",
+  text_bold_color = "#f79334",
+  code_inline_color = "#B56B6F",
+  code_highlight_color = "transparent",
+  link_color = "#2c8475",
+  table_row_even_background_color = lighten_color("#345865", 0.9),
+  extra_fonts = list(
+    google_font("Times New Roman", "400")
+  ),
+  colors = c(
+    green = "#31b09e",
+    "green-dark" = "#2c8475",
+    highlight = "#87f9bb",
+    purple = "#887ba3",
+    pink = "#B56B6F",
+    orange = "#f79334",
+    red = "#dc322f",
+    `blue-dark` = "#002b36",
+    `text-dark` = "#202020",
+    `text-darkish` = "#424242",
+    `text-mild` = "#606060",
+    `text-light` = "#9a9a9a",
+    `text-lightest` = "#eaeaea"
+  ),
+  extra_css = list(
+    ".remark-slide-content h3" = list(
+      "margin-bottom" = 0, 
+      "margin-top" = 0
+    ),
+    ".smallish, .smallish .remark-code-line" = list(`font-size` = "0.9em")
+  )
+)
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons", "share_again"))
+xaringanExtra::use_extra_styles()
+```
+
+
+```{r components, include=FALSE}
+slides_from_images <- function(
+  path,
+  regexp = NULL,
+  class = "hide-count",
+  background_size = "contain",
+  background_position = "top left"
+) {
+  if (isTRUE(getOption("slide_image_placeholder", FALSE))) {
+    return(glue::glue("Slides to be generated from [{path}]({path})"))
+  }
+  if (fs::is_dir(path)) {
+    imgs <- fs::dir_ls(path, regexp = regexp, type = "file", recurse = FALSE)
+  } else if (all(fs::is_file(path) && fs::file_exists(path))) {
+    imgs <- path
+  } else {
+    stop("path must be a directory or a vector of images")
+  }
+  imgs <- fs::path_rel(imgs, ".")
+  breaks <- rep("\n---\n", length(imgs))
+  breaks[length(breaks)] <- ""
+
+  txt <- glue::glue("
+  class: {class}
+  background-image: url('{imgs}')
+  background-size: {background_size}
+  background-position: {background_position}
+  {breaks}
+  ")
+
+  paste(txt, sep = "", collapse = "")
+}
+options("slide_image_placeholder" = FALSE)
+```
+
+class: title-slide-section, middle
+<br>
+<br>
+<br>
+<br>
+# Lectura 4: Barriuso & Hayes-Harb (2018)
+
+---
+
+# Ideas principales
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**High Variability Phonetic Training** (HVPT) es un método de enseñar la percepción de nuevos contrastes de la L2.
+
+Utiliza varias voces, en vez de solo una, en entranemineto.
+
+Hay evidencia que la producción mejora junto con la percepción.
+
+]]]
+
+---
+
+# Introducción 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+El uso de varias voces **introduce variabilidad**.
+
+¿Por qué creen que el uso de varias voces, en vez de una, es major para aprender un sonido nuevo
+
+]]]
+
+
+
+<img src="./images/wave.jpeg"
+     width="254px" height="327px"
+     style="position:absolute; left:800px; top:150px;">
+
+
+---
+
+# Una respuesta 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+En la percepción del habla:
+
+el hablante produce **un señal acústico variable**, codificado con información fonemica.
+
+el oyente tiene que percibir este señal y **mapea esta información** en su representación mental. 
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Se hace esto usando **pistas acústicas**, o dimensiones comunes presentes en el señal acúsitco   
+
+- Percibimos frequencias en herzios de las vocales que se llaman **formantes** que nos ayuda a identificarlas.
+
+- Somos sensibles a **la duración** (la diferencia entre /p/ y /b/ se debe a la duración)
+]]]
+
+---
+
+# Una respuesta 
+
+
+.pull-left[
+.full-width[
+.content-box-grey[
+Los sonidos que producimos son **variables**, pero entendemos **categorías**.
+
+Eso implica **entendemos algo importante en común** que nos permite identificar los sonidos del habla con éxito. 
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Hablantes diferentes de la misma lengua **producen los sonidos usando las mismas pistas acústicas**
+
+A la vez producen otros aspectos del mismo sonido de **formas muy individuales**. 
+
+El aprendiz no sabe al principio cuáles son las pistas importantes, y no tiene suficiente información con menos voces.
+
+Con el HVPT, el uso de varias voces permite que los aprendices aprendan implícitamente **qué pistas acústicas son fiables entre varios hablantes** para distinguir sonidos y cuáles no lo son. 
+]]]
+---
+
+# La Historia de HVPT: el experimento principal 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Logan, Lively, y Pisoni (1991)**
+
+Grabaron **68 pares mínimos** de /r/ y /l/ (rock-lock) en inglés producidos por 6 hablantes. 
+
+Los oyentes L1 japoneses realizaron un pretest, fueron entrenados y un posttest (idéntico al pretest). 
+
+En cada fase, realizaron una **tarea de identificación de elección forzada** (¿es esta palabra rock o lock)?
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Completaron **15 sesiones de entrenamiento** a lo largo de tres semanas. 
+
+Los participantes identificaban los sonidos y se les decía si habían acertado después de cada intente/pregunta. 
+
+En cada sesión se utilizó la voz de sólo uno de los hablantes.
+
+Sólo mejoraron los que habían entrenado.
+]]]
+
+---
+
+# Más información de los resultados 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+También influyó **el contexto fonético** de los contrastes:
+
+- Los grupos iniciales (por ejemplo, click vs. crick) y sonidos entre vocales (por ejemplo, arrive vs. alive) mejoraron más que el sonidos iniciales (por ejemplo, lock vs. rock) y finales (por ejemplo, ball vs. bar).
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+Las mejoras también se **generalizan** a palabras nuevas (Lively, Logan y Pisoni, 1993). 
+
+El aprendizaje parece durar **a largo plazo** (Lively, Pisoni, Yamada, Tohkura, Yamada, 1994).
+
+También **mejoraron su pronunciación**.
+]]]
+
+---
+
+# Retos y otros factores 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**El HVPT podría ser más eficaz para algunos alumnos que para otros.**
+Las personas con mejor percepción inicial del tono respondieron mejor al entrenamiento de contrastes tonales (en mandarín) 
+
+Para una menor capacidad inicial en la percepción del habla preexistente, el orden de los estímulos es importante.
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+**La forma en que realizamos el entranamiento importa (con psuedowords o palabras reales).**
+
+Thomson y Derwing (2016):  40 estudiantes de inglés L2 mejoraron la producción después de HVPT con palabras falsas (psuedowords), pero no con palabras reales.
+]]]
+
+
+
+---
+
+# Extra info: Opciones de orden de estímulo
+
+Los formatos en bloque o mixto.
+
+Para una **menor capacidad inicial** en la percepción del habla preexistente, el formato de **bloque era mejor** que el mixto.
+
+Ejemplo: Tenemos tokens de hablantes A, B y C.
+
+El formato en bloque: .blue[TA], .blue[TA], .blue[TA], .green[TB], .green[TB], .green[TB], .red[TC], .red[TC], .red[TC].
+
+El formato mixto:.blue[TA], .green[TB], .red[TC], .blue[TA], .green[TB], .red[TC], .blue[TA], .green[TB], .red[TC]
+
+* Token del hablante A = TA
+* Token del hablante B = TB
+* Token del hablante C = TC
+
+---
+
+# Otras consideraciones 
+
+.pull-left[
+.full-width[
+.content-box-grey[
+**Preguntas abiertas en la investigación** 
+
+¿Cuántos hablantes son ideales?
+
+¿Cuántos contextos fonéticos son ideales? 
+
+¿Cuántos sonidos podemos entrenar a la vez?
+]]]
+
+---
+# Trabajo en grupo (final?)
+
+.pull-left[
+.full-width[
+.content-box-grey[
+En grupos, vamos a crear un juego/una prueba de aprendizaje para inglés o español.
+
+**Elige un par de sonidos** que quieres enseñar (en caso de duda, las vocales son tus amigas; las consonantes oclusivas también son buenas para el español).
+]]]
+
+--
+
+.pull-right[
+.full-width[
+.content-box-grey[
+**Diseña una lista** que contenga los sonidos en parejas mínimas, manteniendo el contexto (por ejemplo, rock v lock, click v crick)
+
+**Decide cuántas sesiones** de entrenamiento quieres y cuántas repeticiones quieres de cada sonido.
+
+Decide si quieres el formato en bloque o mixto. 
+]]]
