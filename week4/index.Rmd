@@ -105,6 +105,120 @@ slides_from_images <- function(
 options("slide_image_placeholder" = FALSE)
 ```
 
+---
+title: "Semana 4: Entrenamiento Fonético de Alta Variabilidad"
+subtitle: 'La adquisición de la fonética y fonología del español como L2'
+author  : "Kyle Parrish"
+date    : "Goethe Uni Frankfurt</br>Invierno 2024</br>Última actualización: `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, my-css.css, rutgers-fonts]
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: true
+      ratio: 16:9
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', fig.width = 6, fig.height = 4, warning = FALSE, message = FALSE
+)
+```
+
+---
+
+# Actividad grupal: ¿Qué es la percepción del habla?
+
+### Pregunta para discusión:
+- "¿Qué es la percepción del habla?"
+
+#### Respuesta:
+- Usamos **señales específicas** para entender un mensaje codificado que produce otro hablante.
+  - Estas señales son tanto **visuales** como **auditivas**.
+
+---
+
+# El efecto McGurk
+
+- La percepción del habla involucra tanto la entrada auditiva como la visual.
+- Observemos esto a través del **efecto McGurk**.
+
+**Mira este video:** [El efecto McGurk](https://www.youtube.com/watch?v=2k8fHR9jKVM)
+
+- Pregunta para el grupo:
+  - ¿Qué nos dice esto sobre cómo percibimos el habla?
+
+---
+
+# Conceptos clave de la percepción del habla
+
+### Señales de la percepción del habla
+- **Señales auditivas:**
+  - Formantes
+  - Tono
+  - Duración
+- **Señales visuales:**
+  - Movimientos de los labios
+  - Expresiones faciales
+
+---
+
+# Ejercicio interactivo: Señales auditivas vs. visuales
+
+1. Júntate con alguien a tu lado.
+2. Una persona debe taparse los oídos mientras la otra pronuncia una frase en silencio.
+3. Cambien roles.
+4. Discute: ¿Qué señales fueron más fáciles de usar?
+
+---
+
+# Importancia de la percepción del habla en la adquisición de L2
+
+- Los aprendices a menudo tienen dificultades con:
+  - Identificar fonemas desconocidos.
+  - Decodificar el habla rápida.
+
+### ¿Por qué?
+- Transferencia del sistema fonológico de L1.
+- Exposición limitada a señales visuales específicas de L2.
+
+---
+
+# Estrategias para mejorar la percepción del habla
+
+### Entrenamiento fonético de alta variabilidad (HVPT)
+- Expone a los aprendices a una variedad de:
+  - Hablantes
+  - Contextos
+  - Acentos
+
+### Beneficios:
+- Mejora la capacidad de generalizar entre hablantes.
+- Aumenta la precisión en el reconocimiento de fonemas.
+
+---
+
+# Actividad: Identificación de fonemas en ruido
+
+1. Escucha los siguientes clips de audio:
+   - Clip 1: [Insertar enlace o descripción]
+   - Clip 2: [Insertar enlace o descripción]
+2. Identifica los fonemas en cada clip.
+3. Discute estrategias para decodificar el habla en entornos ruidosos.
+
+---
+
+# Conclusión
+
+### Puntos clave:
+- La percepción del habla involucra tanto **señales auditivas** como **visuales**.
+- El efecto McGurk destaca la integración de estas modalidades.
+- El HVPT puede mejorar la capacidad de los aprendices de L2 para percibir y producir fonemas.
+
+### ¿Preguntas o comentarios?
+
+
+
 class: title-slide-section, middle
 <br>
 <br>

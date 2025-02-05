@@ -1,0 +1,273 @@
+---
+title: "Semana 8: La fonología de los hablantes de herencia"
+subtitle: 'La adquisición de la fonética y fonología del español como L2'
+author  : "Kyle Parrish"
+date    : "Goethe Uni Frankurt</br>Winter 2024</br>Last update: `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: [default, hygge, my-css.css, rutgers-fonts]
+    lib_dir: libs
+    nature:
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  comment = '', fig.width = 6, fig.height = 6, message = FALSE, warning = FALSE, echo = FALSE
+)
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  # primary_color = "#345865",
+  primary_color = "#B56B6F",
+  secondary_color = "#2c8475",
+  black_color = "#4242424",
+  white_color = "#FFF",
+  base_font_size = "25px",
+  # text_font_family = "Jost",
+  # text_font_url = "https://indestructibletype.com/fonts/Jost.css",
+  header_font_google = google_font("Times New Roman", "400", "700"),
+  header_font_weight = "400",
+  inverse_header_color = "#eaeaea",
+  title_slide_text_color = "black",
+  text_slide_number_color = "#9a9a9a",
+  text_bold_color = "#f79334",
+  code_inline_color = "#B56B6F",
+  code_highlight_color = "transparent",
+  link_color = "#2c8475",
+  table_row_even_background_color = lighten_color("#345865", 0.9),
+  extra_fonts = list(
+    google_font("Times New Roman", "400")
+  ),
+  colors = c(
+    green = "#31b09e",
+    "green-dark" = "#2c8475",
+    highlight = "#87f9bb",
+    purple = "#887ba3",
+    pink = "#B56B6F",
+    orange = "#f79334",
+    red = "#dc322f",
+    `blue-dark` = "#002b36",
+    `text-dark` = "#202020",
+    `text-darkish` = "#424242",
+    `text-mild` = "#606060",
+    `text-light` = "#9a9a9a",
+    `text-lightest` = "#eaeaea"
+  ),
+  extra_css = list(
+    ".remark-slide-content h3" = list(
+      "margin-bottom" = 0, 
+      "margin-top" = 0
+    ),
+    ".smallish, .smallish .remark-code-line" = list(`font-size` = "0.9em")
+  )
+)
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "tachyons", "share_again"))
+xaringanExtra::use_extra_styles()
+```
+
+
+```{r components, include=FALSE}
+slides_from_images <- function(
+  path,
+  regexp = NULL,
+  class = "hide-count",
+  background_size = "contain",
+  background_position = "top left"
+) {
+  if (isTRUE(getOption("slide_image_placeholder", FALSE))) {
+    return(glue::glue("Slides to be generated from [{path}]({path})"))
+  }
+  if (fs::is_dir(path)) {
+    imgs <- fs::dir_ls(path, regexp = regexp, type = "file", recurse = FALSE)
+  } else if (all(fs::is_file(path) && fs::file_exists(path))) {
+    imgs <- path
+  } else {
+    stop("path must be a directory or a vector of images")
+  }
+  imgs <- fs::path_rel(imgs, ".")
+  breaks <- rep("\n---\n", length(imgs))
+  breaks[length(breaks)] <- ""
+
+  txt <- glue::glue("
+  class: {class}
+  background-image: url('{imgs}')
+  background-size: {background_size}
+  background-position: {background_position}
+  {breaks}
+  ")
+
+  paste(txt, sep = "", collapse = "")
+}
+options("slide_image_placeholder" = FALSE)
+```
+
+class: title-slide
+
+# Investigación sobre la Fonética y Fonología del Español de Herencia
+
+### Implicaciones Pedagógicas y Curriculares
+Rajiv Rao y Emily Kuder
+
+---
+
+## La Fonética y Fonología del Español de Herencia
+
+--
+
+### Introducción
+
+.large[
+- El término **hablante de herencia** se refieree a un tipo de bilingüe que crece con cierto grado de exposición a una lengua minoritaria en casa, o a una lengua de herencia (LH) (Valdés, 2000; entre otros).
+]
+
+--
+
+.large[
+- Uno de los ejemplos más populosos es el de los usuarios de LH del español en Estados Unidos.
+]
+
+--
+
+.large[
+- La fonética y fonología del español de herencia han sido poco estudiadas.
+]
+
+--
+.large[
+- Este estudio analiza cómo las diferencias fonéticas pueden informar la enseñanza del español a hablantes de herencia. 
+]
+---
+
+## La Fonética y Fonología del Español de Herencia
+
+--
+
+### Consonantes
+
+.large[
+- Los hablantes de herencia producen en consonantes españolas como hablantes monolingües, con algunas excepciones:
+]
+
+--
+
+.large[
+- Diferencias en la producción de las oclusivas sonoras /b, d, g/.
+]
+
+--
+
+.large[
+- La diferencia "r" - "rr" se realiza con la duración en el caso de los hablantes de herencia y con el número de vibraciones en el caso de los monolingües.
+]
+
+---
+
+## LaFonética y Fonología del Español de Herencia
+
+--
+
+### Vocales
+
+.large[
+- Las vocales suelen ser más estables en español.
+]
+
+--
+
+.large[
+- Algunos estudios muestran una reducción vocálica en sílabas átonas.
+]
+
+--
+
+.large[
+- Variaciones pueden depender del dialecto de origen y del contacto con el inglés.
+]
+---
+
+## La Fonética y Fonología del Español de Herencia
+
+--
+
+### Prosodia
+
+.large[
+- Intonación de preguntas y declaraciones muestra influencias del inglés.
+]
+--
+
+.large[
+- Ritmo más parecido al inglés en algunos hablantes de herencia.
+]
+
+--
+
+.large[
+- Necesidad de más estudios sobre el acento prosódico y el ritmo en español de herencia.
+]
+
+---
+
+## La Fonética y Fonología del Español de Herencia
+
+--
+ 
+### Implicaciones Pedagógicas y Curriculares
+
+.large[
+- La enseñanza debe ajustarse a las necesidades específicas de los hablantes de herencia.
+]
+
+--
+
+.large[
+- Fomentar la conciencia metalingüística sobre el sistema fonético del español.
+]
+
+--
+
+.large[
+- Evitar la estigmatización de variedades no estándar del español.
+]
+
+--
+
+.large[
+- Diseñar programas que incluyan instrucción explícita en fonética y fonología.
+]
+
+---
+
+## Conclusión
+
+.large[
+- Se necesita más investigación sobre la fonética del español de herencia.
+]
+
+--
+
+.large[
+- Los programas de enseñanza deben considerar la diversidad lingüística de los estudiantes.
+]
+
+--
+
+.large[
+- La integración de estudios fonéticos en el currículo puede mejorar la confianza y competencia lingüística de los hablantes de herencia.
+]
+
+---
+
+## Referencias
+
+- Rao, R. & Kuder, E. (2016). *Research on Heritage Spanish Phonetics and Phonology: Pedagogical and Curricular Implications.* **New Approaches in Educational Research**, 5(2), 99-106.
+
+---
+
+## ¡Gracias!
+
+### Preguntas o comentarios

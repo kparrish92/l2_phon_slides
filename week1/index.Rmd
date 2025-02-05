@@ -141,7 +141,7 @@ class: title-slide-section, middle
 .full-width[
 .content-box-grey[
 .large[
-- La fonética es dificil de aprender cómo los nativos. 
+- La fonética de una L2 es dificil de aprender perfectamente. 
 
 - Las vocales del español son faciles de percibir, y un poco más dificiles de producir.
 
@@ -149,9 +149,6 @@ class: title-slide-section, middle
 ]]]]
 
 
-<img src="./images/simonet.png"
-     width="254px" height="327px"
-     style="position:absolute; left:800px; top:150px;">
      
 ---
 

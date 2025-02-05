@@ -199,7 +199,7 @@ https://www.youtube.com/watch?v=M-ymanHajN8
 .pull-right[
 .full-width[
 .content-box-grey[
-- **Vínculo entre percepción y producción**: La percepción debe venir antes de la producción. 
+**Vínculo entre percepción y producción**: La percepción debe venir antes de la producción. 
 
 - La presencia de la producción sin la percepción sería difícil de explicar desde este punto de vista. 
 ]]]
